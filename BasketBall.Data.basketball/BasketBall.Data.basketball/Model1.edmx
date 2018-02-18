@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="basketballModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="game">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="homeTeamId" Type="int" />
+          <Property Name="awayTeamId" Type="int" />
+          <Property Name="quarter1Home" Type="int" />
+          <Property Name="quarter1Away" Type="int" />
+          <Property Name="quarter2Home" Type="int" />
+          <Property Name="quarter2Away" Type="int" />
+          <Property Name="quarter3Home" Type="int" />
+          <Property Name="quarter3Away" Type="int" />
+          <Property Name="quarter4Home" Type="int" />
+          <Property Name="quarter4Away" Type="int" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="age" Type="int" />
+          <Property Name="winLossRecordId" Type="int" />
+          <Property Name="isStarter" Type="bit" />
+          <Property Name="positionEnum" Type="varchar" MaxLength="100" />
+          <Property Name="teamId" Type="int" />
+        </EntityType>
+        <EntityType Name="team">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="captainPlayerId" Type="int" />
+          <Property Name="winLossRecordId" Type="int" />
+        </EntityType>
+        <EntityType Name="winLossRecord">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="wins" Type="int" />
+          <Property Name="losses" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityContainer Name="basketballModelStoreContainer">
+          <EntitySet Name="game" EntityType="Self.game" Schema="basketball" store:Type="Tables" />
+          <EntitySet Name="player" EntityType="Self.player" Schema="basketball" store:Type="Tables" />
+          <EntitySet Name="team" EntityType="Self.team" Schema="basketball" store:Type="Tables" />
+          <EntitySet Name="winLossRecord" EntityType="Self.winLossRecord" Schema="basketball" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="basketballModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="game">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="homeTeamId" Type="Int32" />
+          <Property Name="awayTeamId" Type="Int32" />
+          <Property Name="quarter1Home" Type="Int32" />
+          <Property Name="quarter1Away" Type="Int32" />
+          <Property Name="quarter2Home" Type="Int32" />
+          <Property Name="quarter2Away" Type="Int32" />
+          <Property Name="quarter3Home" Type="Int32" />
+          <Property Name="quarter3Away" Type="Int32" />
+          <Property Name="quarter4Home" Type="Int32" />
+          <Property Name="quarter4Away" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="winLossRecordId" Type="Int32" />
+          <Property Name="isStarter" Type="Boolean" />
+          <Property Name="positionEnum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="teamId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="team">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="captainPlayerId" Type="Int32" />
+          <Property Name="winLossRecordId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="winLossRecord">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="wins" Type="Int32" />
+          <Property Name="losses" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="basketballEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="games" EntityType="Self.game" />
+          <EntitySet Name="players" EntityType="Self.player" />
+          <EntitySet Name="teams" EntityType="Self.team" />
+          <EntitySet Name="winLossRecords" EntityType="Self.winLossRecord" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="basketballModelStoreContainer" CdmEntityContainer="basketballEntities">
+          <EntitySetMapping Name="games">
+            <EntityTypeMapping TypeName="basketballModel.game">
+              <MappingFragment StoreEntitySet="game">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="homeTeamId" ColumnName="homeTeamId" />
+                <ScalarProperty Name="awayTeamId" ColumnName="awayTeamId" />
+                <ScalarProperty Name="quarter1Home" ColumnName="quarter1Home" />
+                <ScalarProperty Name="quarter1Away" ColumnName="quarter1Away" />
+                <ScalarProperty Name="quarter2Home" ColumnName="quarter2Home" />
+                <ScalarProperty Name="quarter2Away" ColumnName="quarter2Away" />
+                <ScalarProperty Name="quarter3Home" ColumnName="quarter3Home" />
+                <ScalarProperty Name="quarter3Away" ColumnName="quarter3Away" />
+                <ScalarProperty Name="quarter4Home" ColumnName="quarter4Home" />
+                <ScalarProperty Name="quarter4Away" ColumnName="quarter4Away" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="players">
+            <EntityTypeMapping TypeName="basketballModel.player">
+              <MappingFragment StoreEntitySet="player">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="winLossRecordId" ColumnName="winLossRecordId" />
+                <ScalarProperty Name="isStarter" ColumnName="isStarter" />
+                <ScalarProperty Name="positionEnum" ColumnName="positionEnum" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teams">
+            <EntityTypeMapping TypeName="basketballModel.team">
+              <MappingFragment StoreEntitySet="team">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="captainPlayerId" ColumnName="captainPlayerId" />
+                <ScalarProperty Name="winLossRecordId" ColumnName="winLossRecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="winLossRecords">
+            <EntityTypeMapping TypeName="basketballModel.winLossRecord">
+              <MappingFragment StoreEntitySet="winLossRecord">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="wins" ColumnName="wins" />
+                <ScalarProperty Name="losses" ColumnName="losses" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
